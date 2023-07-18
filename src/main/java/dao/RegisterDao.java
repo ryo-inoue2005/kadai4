@@ -64,7 +64,7 @@ public class RegisterDao {
 			String line = null;
 			GetDao getTable = new GetDao();
 			int nextCode = 1;
-			
+
 			// 登録されているおみくじコードの最大値の次のおみくじコードを格納
 			int omikujiCode = getTable.getMaxOmikujiCode() + nextCode;
 
@@ -80,14 +80,11 @@ public class RegisterDao {
 				dba.setData(3, csvData[1]);
 				dba.setData(4, csvData[2]);
 				dba.setData(5, csvData[3]);
-				
+
 				// 登録処理が行われた場合、おみくじコードをインクリメントする
-				if(dba.update() == 1) {
+				if (dba.update() == 1) {
 					omikujiCode++;
 				}
-
-				// 初期化
-				csvData = null;
 			}
 
 		} finally {
