@@ -25,6 +25,7 @@ Fortune fortune = (Fortune) request.getAttribute("fortune");
 	}
 	%>
 
+	<a href="form">占いフォームに戻る</a>
 
 </body>
 </html>
