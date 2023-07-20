@@ -4,16 +4,6 @@
 <%
 // リクエストスコープからのデータの取得
 Fortune fortune = (Fortune) request.getAttribute("fortune");
-// 改行文字で文字を分ける
-String[] dispArray = fortune.disp().split(System.getProperty("line.separator"));
-// 表示用文字
-StringBuilder disp = new StringBuilder();
-
-// 改行文字があった場所に<br>を付ける
-for (String str : dispArray) {
-	disp.append(str);
-	disp.append("<br>");
-}
 %>
 
 <!DOCTYPE html>
@@ -26,7 +16,13 @@ for (String str : dispArray) {
 
 	<h1>運勢結果</h1>
 
-	<p><%=disp%></p>
+	<%
+	for (String dispStr : fortune.disp()) {
+	%>
+	<p><%=dispStr%></p>
+	<%
+	}
+	%>
 
 	<a href="fortune">占いフォームに戻る</a>
 

@@ -62,19 +62,11 @@ public abstract class Omikuji implements Fortune {
 	 * @see Fortune#disp()
 	 */
 	@Override
-	public String disp() {
-		// システムの改行を使う
-		final String lf = System.getProperty("line.separator");
-		
-		StringBuilder sb = new StringBuilder();
-		sb.append(String.format(DISP_STR, getUnsei()));
-		sb.append(lf);
-		sb.append("願い事：" + getNegaigoto());
-		sb.append(lf);
-		sb.append("商い：" + getAkinai());
-		sb.append(lf);
-		sb.append("学問：" + getGakumon());
-		sb.append(lf);
-		return sb.toString();
+	public String[] disp() {
+
+		String[] disp = { String.format(DISP_STR, getUnsei()), "願い事：" + getNegaigoto(), "商い：" + getAkinai(),
+				"学問：" + getGakumon() };
+
+		return disp;
 	}
 }
