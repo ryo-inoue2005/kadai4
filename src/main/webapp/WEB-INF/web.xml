@@ -8,15 +8,13 @@
 	<servlet>
 		<servlet-name>InitSevlet</servlet-name>
 		<servlet-class>init.InitServlet</servlet-class>
-		<load-on-startup>
-		0
-		</load-on-startup>
+		<load-on-startup>0</load-on-startup>
 	</servlet>
 
 	<!-- ************** ウェルカムページ ************** -->
 
 	<welcome-file-list>
-		<welcome-file>form</welcome-file>
+		<welcome-file>fortune</welcome-file>
 	</welcome-file-list>
 
 </web-app>

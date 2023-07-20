@@ -20,7 +20,6 @@ public class InputCheck {
 
 		// 数値がどうかチェック
 		if (input == null || !input.matches("^[0-9]+$|-[0-9]+$")) {
-
 			return "数値を入力してください";
 		}
 
@@ -29,7 +28,6 @@ public class InputCheck {
 
 		// 正しい形式かチェック
 		try {
-
 			fs = df.format(df.parse(input));
 		} catch (Exception e) {
 
@@ -38,7 +36,6 @@ public class InputCheck {
 
 		// 存在する日付かチェック
 		if (!input.equals(fs)) {
-
 			return "日付が存在しません";
 		}
 

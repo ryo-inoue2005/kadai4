@@ -1,10 +1,10 @@
 package init;
 
-import javax.servlet.ServletConfig;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 
-import dao.RegisterDao;
+import dao.RegisterOmikujiDao;
 
 /**
  * InitServletクラス. <br>
@@ -21,16 +21,18 @@ public class InitServlet extends HttpServlet {
 	 * @throws ServletException
 	 */
 	@Override
-	public void init(ServletConfig config) throws ServletException {
+	public void init() throws ServletException {
 		try {
-			// プロパティファイルからデータベースにおみくじを登録する
 			System.out.println("おみくじテーブル初期化処理実行");
-			RegisterDao dao = new RegisterDao();
-			dao.registerOmikuji();
+
+			// プロパティファイルからデータベースにおみくじを登録する
+			RegisterOmikujiDao dao = new RegisterOmikujiDao();
+			ServletContext context = this.getServletContext();
+			dao.registerOmikuji(context.getRealPath("data/fortune.csv"));
 
 		} catch (Exception e) {
 			e.printStackTrace();
-			throw new ServletException();
+			throw new ServletException(e);
 		}
 	}
 
