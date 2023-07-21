@@ -19,5 +19,5 @@ public interface Fortune {
 	 *
 	 * @return 占い結果
 	 */
-	String[] disp();
+	String disp();
 }

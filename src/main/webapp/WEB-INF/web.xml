@@ -14,7 +14,7 @@
 	<!-- ************** ウェルカムページ ************** -->
 
 	<welcome-file-list>
-		<welcome-file>fortune</welcome-file>
+		<welcome-file>form</welcome-file>
 	</welcome-file-list>
 
 </web-app>

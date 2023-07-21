@@ -24,18 +24,11 @@ public class GetOmikujiDao {
 	 * resultテーブルに保存されているおみくじ結果を取得します。
 	 * 同一誕生日、同一日ならば、おみくじ結果を返す。
 	 * 
-	 * @throws ClassNotFoundException
-	 *			クラス未発見例外
-	 * @throws SQLException
-	 * 			SQL例外
-	 * 
-	 * @param birthday
-	 * 			誕生日
-	 * 
-	 * @return Omikuji
-	 * 			おみくじオブジェクト
-	 * @return null
-	 * 			取得できない場合
+	 * @throws ClassNotFoundException クラス未発見例外
+	 * @throws SQLException SQL例外
+	 * @param birthday 誕生日
+	 * @return Omikuji おみくじオブジェクト
+	 * @return 0 取得できない場合
 	 */
 	public int getResult(String birthDay) throws ClassNotFoundException, SQLException {
 
@@ -75,18 +68,11 @@ public class GetOmikujiDao {
 	/**
 	 * データベースからおみくじを取得します。
 	 * 
-	 * @throws ClassNotFoundException
-	 *			クラス未発見例外
-	 * @throws SQLException
-	 * 			SQL例外
-	 * 
-	 * @param random
-	 * 			ランダムな数値
-	 * 
-	 * @return Omikuji
-	 * 			おみくじオブジェクト
-	 * @return null
-	 * 			取得できない場合
+	 * @throws ClassNotFoundException クラス未発見例外
+	 * @throws SQLException SQL例外
+	 * @param random ランダムな数値
+	 * @return Omikuji おみくじオブジェクト
+	 * @return null 取得できない場合
 	 */
 	public Omikuji drawOmikuji(int random) throws ClassNotFoundException, SQLException {
 
@@ -127,15 +113,10 @@ public class GetOmikujiDao {
 	/**
 	 * データベースからおみくじの数を取得します。
 	 * 
-	 * @throws ClassNotFoundException
-	 *			クラス未発見例外
-	 * @throws SQLException
-	 * 			SQL例外
-	 * 
-	 * @return	おみくじの数
-	 * 
-	 * @return 0
-	 *			おみくじがない場合
+	 * @throws ClassNotFoundException クラス未発見例外
+	 * @throws SQLException SQL例外
+	 * @return おみくじの数
+	 * @return 0 おみくじがない場合
 	 */
 	public int getMaxOmikujiCode() throws ClassNotFoundException, SQLException {
 		try {

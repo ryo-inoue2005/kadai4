@@ -24,10 +24,8 @@ public final class DataBaseAcess {
 	/**
 	 * データベースにアクセスします。
 	 * 
-	 * @throws ClassNotFoundException
-	 * 			ファイル未発見例外
-	 * @throws SQLException
-	 * 			SQL例外
+	 * @throws ClassNotFoundException ファイル未発見例外
+	 * @throws SQLException SQL例外
 	 */
 	public void open() throws ClassNotFoundException, SQLException {
 		// ドライバ読み込み
@@ -38,10 +36,8 @@ public final class DataBaseAcess {
 	/**
 	 * PreparedStatementにSQL文をセットします
 	 * 
-	 * @param sql
-	 * 			SQL文
-	 * @throws SQLException
-	 * 			SQL例外
+	 * @param sql SQL文
+	 * @throws SQLException SQL例外
 	 */
 	public void setSql(String sql) throws SQLException {
 		this.preparedStatement = this.connection.prepareStatement(sql);
@@ -50,40 +46,31 @@ public final class DataBaseAcess {
 	/**
 	 * 指定されたパラメータを指定されたインデックスにセットします。
 	 * 
-	 * @param index
-	 * 			インデックス
-	 * @param data
-	 * 			セットする値
-	 * @throws SQLException
-	 * 			SQL例外
+	 * @param index インデックス
+	 * @param data セットする値
+	 * @throws SQLException SQL例外
 	 */
 	public void setData(int index, String data) throws SQLException {
 		this.preparedStatement.setString(index, data);
 	}
-	
+
 	/**
 	 * 指定されたパラメータを指定されたインデックスにセットします。
 	 * 
-	 * @param index
-	 * 			インデックス
-	 * @param data
-	 * 			セットする値
-	 * @throws SQLException
-	 * 			SQL例外
+	 * @param index インデックス
+	 * @param data セットする値
+	 * @throws SQLException SQL例外
 	 */
 	public void setData(int index, int data) throws SQLException {
 		this.preparedStatement.setInt(index, data);
 	}
-	
+
 	/**
 	 * 指定されたパラメータを指定されたインデックスにセットします。
 	 * 
-	 * @param index
-	 * 			インデックス
-	 * @param data
-	 * 			セットする値
-	 * @throws SQLException
-	 * 			SQL例外
+	 * @param index インデックス
+	 * @param data セットする値
+	 * @throws SQLException SQL例外
 	 */
 	public void setData(int index, double data) throws SQLException {
 		this.preparedStatement.setDouble(index, data);
@@ -92,12 +79,9 @@ public final class DataBaseAcess {
 	/**
 	 * 指定されたパラメータを指定されたインデックスにセットします。
 	 * 
-	 * @param index
-	 * 			インデックス
-	 * @param data
-	 * 			セットする値
-	 * @throws SQLException
-	 * 			SQL例外
+	 * @param index インデックス
+	 * @param data セットする値
+	 * @throws SQLException SQL例外
 	 */
 	public void setData(int index, Date data) throws SQLException {
 		this.preparedStatement.setDate(index, data);
@@ -106,8 +90,7 @@ public final class DataBaseAcess {
 	/**
 	 * バッチ処理をするSQL文を追加します。
 	 * 
-	 * @throws SQLException
-	 * 			SQL例外
+	 * @throws SQLException SQL例外
 	 */
 	public void addBatch() throws SQLException {
 		this.preparedStatement.addBatch();
@@ -116,8 +99,7 @@ public final class DataBaseAcess {
 	/**
 	 * SELECT文を実行します。
 	 * 
-	 * @throws SQLException
-	 * 			SQL例外
+	 * @throws SQLException SQL例外
 	 */
 	public ResultSet select() throws SQLException {
 		return this.preparedStatement.executeQuery();
@@ -126,8 +108,7 @@ public final class DataBaseAcess {
 	/**
 	 * UPDATE文、INSERT文を実行します。
 	 * 
-	 * @throws SQLException
-	 * 			SQL例外
+	 * @throws SQLException SQL例外
 	 */
 	public int update() throws SQLException {
 		return this.preparedStatement.executeUpdate();
@@ -136,8 +117,7 @@ public final class DataBaseAcess {
 	/**
 	 * バッチ処理を実行します。
 	 * 
-	 * @throws SQLException
-	 * 			SQL例外
+	 * @throws SQLException SQL例外
 	 */
 	public int[] executeBatch() throws SQLException {
 		return this.preparedStatement.executeBatch();
@@ -146,8 +126,7 @@ public final class DataBaseAcess {
 	/**
 	 * データベースから切断します。
 	 * 
-	 * @throws SQLException
-	 * 			SQL例外
+	 * @throws SQLException SQL例外
 	 */
 	public void close() throws SQLException {
 

@@ -49,12 +49,9 @@ public abstract class Omikuji implements Fortune {
 	/**
 	 * 運勢をセットします。	
 	 * 
-	 * @param negaigoto
-	 * 			願い事
-	 * @param akinai
-	 * 			商い
-	 * @param gakumon
-	 * 			学問
+	 * @param negaigoto 願い事
+	 * @param akinai 商い
+	 * @param gakumon 学問
 	 */
 	public abstract void setUnsei(String negaigoto, String akinai, String gakumon);
 
@@ -62,11 +59,7 @@ public abstract class Omikuji implements Fortune {
 	 * @see Fortune#disp()
 	 */
 	@Override
-	public String[] disp() {
-
-		String[] disp = { String.format(DISP_STR, getUnsei()), "願い事：" + getNegaigoto(), "商い：" + getAkinai(),
-				"学問：" + getGakumon() };
-
-		return disp;
+	public String disp() {
+		return String.format(DISP_STR, getUnsei());
 	}
 }

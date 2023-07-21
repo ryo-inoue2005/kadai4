@@ -14,9 +14,7 @@ public class ConvertData {
 	/**
 	 * 与えられた文字列をSQL.DATE型に変換します。
 	 * 
-	 * @param dateStr
-	 * 			yyyyMMddで入力された文字列
-	 * 
+	 * @param dateStr yyyyMMddで入力された文字列
 	 * @return SQL.DATE型に変換された値
 	 */
 	public static Date toSqlDate(String dateStr) {

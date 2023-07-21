@@ -12,10 +12,8 @@ public class OmikujiFactory {
 	/**
 	 * 運勢を元におみくじオブジェクトを生成して返します。
 	 * 
-	 * @return omikuji
-	 * 			おみくじオブジェクト
-	 * @return null
-	 * 			不正な運勢の場合
+	 * @return omikuji おみくじオブジェクト
+	 * @return null 不正な運勢の場合
 	 */
 	public static Omikuji create(String unsei) {
 

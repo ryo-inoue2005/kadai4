@@ -11,18 +11,30 @@ Omikuji omikuji = (Omikuji) request.getAttribute("omikuji");
 <html>
 <head>
 <meta charset="UTF-8">
-<title>運勢結果</title>
+<title>結果表示画面</title>
 </head>
 <body>
 
 	<h1>運勢結果</h1>
 
-	<p>今日の運勢は<%=omikuji.getUnsei()%>です</p>
-	<p>願い事：<%=omikuji.getNegaigoto()%></p>
-	<p>商い：<%=omikuji.getAkinai()%></p>
-	<p>学問：<%=omikuji.getGakumon()%></p>
+	<%
+	if (omikuji != null) {
+	%>
+	<p><%=omikuji.disp()%></p>
+	<p>
+		願い事：<%=omikuji.getNegaigoto()%></p>
+	<p>
+		商い：<%=omikuji.getAkinai()%></p>
+	<p>
+		学問：<%=omikuji.getGakumon()%></p>
+		
+	<%} else {%>
+	<p>エラーです</p>
+	<%
+	}
+	%>
 
-	<a href="fortune">占いフォームに戻る</a>
+	<a href="form">占いフォームに戻る</a>
 
 </body>
 </html>

@@ -27,12 +27,9 @@ public class RegisterOmikujiDao {
 	 * CSVに入っているおみくじをデータベースに登録します。
 	 * 既に登録されているおみくじは登録されません
 	 * 
-	 * @throws ClassNotFoundException
-	 *			クラス未発見の例外
-	 * @throws SQLException
-	 * 			SQL例外
+	 * @throws ClassNotFoundException クラス未発見の例外
+	 * @throws SQLException SQL例外
 	 * @throws IOException 
-	 * 
 	 */
 	public void registerOmikuji(String filePath) throws ClassNotFoundException, SQLException, IOException {
 
@@ -94,18 +91,11 @@ public class RegisterOmikujiDao {
 	/**
 	 * おみくじの結果をデータベースに登録します。
 	 * 
-	 * @throws ClassNotFoundException
-	 *			クラス未発見例外
-	 * @throws SQLException
-	 * 			SQL例外
-	 * @throws ParseException
-	 * 			変換時の例外
-	 * 
-	 * @param birthday
-	 * 			誕生日
-	 * @param omikujiCode
-	 * 			おみくじコード
-	 * 
+	 * @throws ClassNotFoundException クラス未発見例外
+	 * @throws SQLException SQL例外
+	 * @throws ParseException 変換時の例外
+	 * @param birthday 誕生日
+	 * @param omikujiCode おみくじコード
 	 * @return 登録件数
 	 */
 	public int registerResult(int omikujiCode, String birthDay)
