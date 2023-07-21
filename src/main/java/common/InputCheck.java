@@ -18,8 +18,13 @@ public class InputCheck {
 	 */
 	public static String isInputNg(String input) {
 
+		// 初期表示
+		if (input == null) {
+			return "";
+		}
+
 		// 数値がどうかチェック
-		if (input == null || !input.matches("^[0-9]+$|-[0-9]+$")) {
+		if (!input.matches("^[0-9]+$|-[0-9]+$")) {
 			return "数値を入力してください";
 		}
 

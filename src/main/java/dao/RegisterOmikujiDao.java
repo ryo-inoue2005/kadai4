@@ -12,8 +12,8 @@ import common.ConvertData;
 import common.DataBaseAcess;
 
 /**
- * RegisterDaoクラス. <br>
- * RegisterDaoクラスは、データベース登録処理を行います。
+ * RegisterOmikujiDaoクラス. <br>
+ * RegisterOmikujiDaoクラスは、データベース登録処理を行います。
  *
  * @author Ryo.inoue
  * @version 1.00

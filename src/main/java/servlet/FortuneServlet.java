@@ -8,15 +8,14 @@ import java.util.Random;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
+import javax.servlet.ServletRequest;
+import javax.servlet.ServletResponse;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
 import common.InputCheck;
 import dao.GetOmikujiDao;
 import dao.RegisterOmikujiDao;
-import omikuji.Fortune;
 
 /**
  * FortuneServletクラス. <br>
@@ -27,25 +26,6 @@ import omikuji.Fortune;
  */
 @WebServlet("/fortune")
 public class FortuneServlet extends HttpServlet {
-
-	/**
-	 * doPostに処理を渡します。
-	 * 
-	 * @throws ServletException
-	 * 			サーブレット例外
-	 * @throws IOException
-	 * 			入出力処理例外
-	 * 
-	 * @param request
-	 * 			リクエスト
-	 * @param response
-	 * 			レスポンス
-	 */
-	@Override
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		doPost(request, response);
-	}
 
 	/**
 	 * 初期表示や入力エラー発生時は誕生日入力画面を出力します。
@@ -63,17 +43,16 @@ public class FortuneServlet extends HttpServlet {
 	 * 			レスポンス
 	 */
 	@Override
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+	public void service(ServletRequest request, ServletResponse response) throws ServletException, IOException {
 
-		// 誕生日を取得
-		String birthday = request.getParameter("birthday");
+		// 結果表示画面のURIをセット
+		final String target = "/jsp/resultView.jsp";
+
 		// 入力エラーメッセージを取得
 		String errMsg = (String) request.getAttribute("errMsg");
 
 		// 初期表示
-		if (birthday == null || errMsg != null) {
-
+		if (errMsg != null) {
 			//---------------ブラウザ表示Start----------------//
 			PrintWriter out = response.getWriter();
 
@@ -87,8 +66,8 @@ public class FortuneServlet extends HttpServlet {
 			out.println("<h1>生年月日で今日の運勢を占います</h1>");
 			out.println("<h2>yyyyMMddの形式で生年月日を入力してください</h2>");
 
-			// エラーメッセージがあれば表示
-			if (errMsg != null) {
+			// 初期表示でなければ、エラーメッセージを表示
+			if (!errMsg.equals("")) {
 				out.println("<p style='color: red; font-size: 30px; font-weight: bold';>" + errMsg + "</p>");
 			}
 
@@ -103,16 +82,17 @@ public class FortuneServlet extends HttpServlet {
 			//-------------結果登録、フォワード処理-------------//
 		} else {
 			try {
-				// 結果表示画面のURIをセット
-				final String target = "/jsp/resultView.jsp";
+				// 誕生日を取得
+				String birthday = request.getParameter("birthday");
 
 				// リクエストパラメータから取得した誕生日をチェックする
+				// 初期アクセス時は空文字返す
 				errMsg = InputCheck.isInputNg(birthday);
 
 				// エラーメッセージが格納されていたら、誕生日入力画面に戻る
 				if (errMsg != null) {
 					request.setAttribute("errMsg", errMsg);
-					doPost(request, response);
+					service(request, response);
 					return;
 				}
 
@@ -137,9 +117,8 @@ public class FortuneServlet extends HttpServlet {
 					}
 				}
 
-				// おみくじコードでおみくじを引き、JSPに送信
-				Fortune fortune = getDao.drawOmikuji(omikujiCode);
-				request.setAttribute("fortune", fortune);
+				// おみくじコードでおみくじを引き、リクエストスコープに格納
+				request.setAttribute("omikuji", getDao.drawOmikuji(omikujiCode));
 
 				// 最後まで実行出来たらフォワード
 				ServletContext context = this.getServletContext();
@@ -150,7 +129,7 @@ public class FortuneServlet extends HttpServlet {
 			} catch (SQLException e) {
 				e.printStackTrace();
 				request.setAttribute("errMsg", "データベースエラー");
-				doPost(request, response);
+				service(request, response);
 
 			} catch (Exception e) {
 				e.printStackTrace();

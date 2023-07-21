@@ -9,8 +9,8 @@ import omikuji.Omikuji;
 import omikuji.OmikujiFactory;
 
 /**
- * GetDaoクラス. <br>
- * GetDaoクラスは、データベースからテーブル情報を取得します。
+ * GetOmikujiDaoクラス. <br>
+ * GetOmikujiDaoは、データベースからテーブル情報を取得します。
  *
  * @author Ryo.inoue
  * @version 1.00

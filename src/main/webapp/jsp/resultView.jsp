@@ -1,9 +1,10 @@
+<%@page import="omikuji.Omikuji"%>
 <%@page import="omikuji.Fortune"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%
 // リクエストスコープからのデータの取得
-Fortune fortune = (Fortune) request.getAttribute("fortune");
+Omikuji omikuji = (Omikuji) request.getAttribute("omikuji");
 %>
 
 <!DOCTYPE html>
@@ -16,13 +17,10 @@ Fortune fortune = (Fortune) request.getAttribute("fortune");
 
 	<h1>運勢結果</h1>
 
-	<%
-	for (String dispStr : fortune.disp()) {
-	%>
-	<p><%=dispStr%></p>
-	<%
-	}
-	%>
+	<p>今日の運勢は<%=omikuji.getUnsei()%>です</p>
+	<p>願い事：<%=omikuji.getNegaigoto()%></p>
+	<p>商い：<%=omikuji.getAkinai()%></p>
+	<p>学問：<%=omikuji.getGakumon()%></p>
 
 	<a href="fortune">占いフォームに戻る</a>
 
